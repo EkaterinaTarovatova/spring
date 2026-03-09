@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Wheel -->
+    <bean id="wheel" class="com.car.components.Wheel">
+        <property name="brand" value="Michelin"/>
+    </bean>
+
+    <!-- Engine components -->
+    <bean id="starter" class="com.car.components.Starter"/>
+    <bean id="sparkPlug" class="com.car.components.SparkPlug"/>
+
+    <!-- Engine -->
+    <bean id="engine" class="com.car.components.Engine">
+        <property name="starter" ref="starter"/>
+        <property name="sparkPlug" ref="sparkPlug"/>
+    </bean>
+
+    <!-- Accumulator -->
+    <bean id="accumulator" class="com.car.components.Accumulator"/>
+
+    <!-- Suspension components -->
+    <bean id="hinge" class="com.car.components.Hinge"/>
+    <bean id="differential" class="com.car.components.Differential"/>
+
+    <!-- Suspension -->
+    <bean id="suspension" class="com.car.components.Suspension">
+        <property name="hinge" ref="hinge"/>
+        <property name="differential" ref="differential"/>
+    </bean>
+
+    <!-- Car -->
+    <bean id="car" class="com.car.components.Car">
+        <property name="wheel" ref="wheel"/>
+        <property name="engine" ref="engine"/>
+        <property name="accumulator" ref="accumulator"/>
+        <property name="suspension" ref="suspension"/>
+    </bean>
+
+</beans>
